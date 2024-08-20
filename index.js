@@ -18,7 +18,7 @@ client.connect();
 client.on('message', (channel, tags, message, self) => {
   if (self) return;
 
-  if (message.toLowerCase() === '!witchtime') {
+  if (message.toLowerCase() === '!watchtime') {
     const username = tags.username; 
 
     const apiUrl = `https://api.streamelements.com/kappa/v2/points/${process.env.CHANNEL_ID}/${username}`; 
@@ -74,7 +74,7 @@ client.on('message', (channel, tags, message, self) => {
                 }
               })
               .catch(error => { 
-                console.error(`Fehler beim Abrufen der Watchtime für ${username}:`, error);
+                console.error(`Error fetching data for ${username}:`, error);
                 return { username, watchtime: 0 }; 
               });
           });
